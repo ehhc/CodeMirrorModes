@@ -1,0 +1,22 @@
+{
+  "name": "codemirrormodes",
+  "version": "1.0.0",
+  "description": "Custom modes for CodeMirror",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ehhc/CodeMirrorModes.git"
+  },
+  "author": "ehhc",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/ehhc/CodeMirrorModes/issues"
+  },
+  "homepage": "https://github.com/ehhc/CodeMirrorModes#readme",
+  "devDependencies": {
+    "codemirror": "github:codemirror/CodeMirror"
+  }
+}

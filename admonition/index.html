@@ -1,0 +1,80 @@
+<!doctype html>
+
+<title>CodeMirror: Admonition mode</title>
+<meta charset="utf-8"/>
+<link rel=stylesheet href="../node_modules/codemirror/doc/docs.css">
+
+<link rel="stylesheet" href="../node_modules/codemirror/lib/codemirror.css">
+<link rel="stylesheet" href="admonition.css">
+<script src="../node_modules/codemirror/lib/codemirror.js"></script>
+<script src="admonition.js"></script>
+<style>
+  .CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;}
+  .cm-s-default .cm-emoji {color: #009688;}
+</style>
+<div id=nav>
+  <a href="https://codemirror.net"><h1>CodeMirror</h1><img id=logo src="../node_modules/codemirror/doc/logo.png" alt=""></a>
+
+  <ul>
+    <li><a href="https://github.com/codemirror/codemirror">Code</a>
+  </ul>
+  <ul>
+    <li><a class=active href="#">Admonitions</a>
+  </ul>
+</div>
+
+<article>
+<h2>Mode for  admonitions</h2>
+<form><textarea id="code" name="code">
+!!!INFO Information
+This mode adds support for admonitions to the GFM mode.
+So you can use the syntax you can see here to add important information to your markdown.
+Since it's not the usual GFM I added it as a separate mode.
+!!!
+
+!!!warning Styling
+Please note, that you have to include a suitable CSS file to make the admonitions work.
+See [file://gfm-admonition.css](./gfm-admonition.css) as an example.
+Currently only styling for the types note and warning are included.
+!!!
+
+!!!note Types
+The mode recognizes different admonition types. The following are working:
+- note
+- abstract
+- info
+- tip
+- success
+- question
+- warning
+- failure
+- danger
+- bug
+- example
+- quote"
+- NOTE
+- ABSTRACT
+- INFO
+- TIP
+- SUCCESS
+- QUESTION
+- WARNING
+- FAILURE
+- DANGER
+- BUG
+- EXAMPLE
+- QUOTE"
+!!!
+
+</textarea></form>
+
+    <script>
+      var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        mode: "admonition",
+        lineNumbers: true,
+        theme: "default"
+      });
+    </script>
+
+
+  </article>

@@ -1,0 +1,44 @@
+<!doctype html>
+
+<title>CodeMirror: Table mode</title>
+<meta charset="utf-8"/>
+<link rel=stylesheet href="../node_modules/codemirror/doc/docs.css">
+
+<link rel="stylesheet" href="../node_modules/codemirror/lib/codemirror.css">
+<link rel="stylesheet" href="table.css">
+<script src="../node_modules/codemirror/lib/codemirror.js"></script>
+<script src="table.js"></script>
+<style>
+  .CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;}
+</style>
+<div id=nav>
+  <a href="https://codemirror.net"><h1>CodeMirror</h1><img id=logo src="../node_modules/codemirror/doc/logo.png" alt=""></a>
+
+  <ul>
+    <li><a href="https://github.com/codemirror/codemirror">Code</a>
+  </ul>
+  <ul>
+    <li><a class=active href="#">Table mode</a>
+  </ul>
+</div>
+
+<article>
+<h2>Table mode</h2>
+<form><textarea id="code" name="code">
+
+|table cell|table cell 2 | table cell 3|
+|table cell 11|table cell 12 | table cell 13|
+
+
+</textarea></form>
+
+    <script>
+      var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        mode: "table",
+        lineNumbers: true,
+        theme: "default"
+      });
+    </script>
+
+
+  </article>

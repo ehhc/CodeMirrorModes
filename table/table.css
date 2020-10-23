@@ -1,0 +1,18 @@
+.CodeMirror-line.table-line>span{
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.cm-table-cell {
+  display: table-cell;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+.cm-cell-odd {
+  border-left: none;
+  border-right: none;
+}
