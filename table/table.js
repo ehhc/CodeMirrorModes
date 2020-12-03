@@ -11,32 +11,77 @@
     CodeMirror.defineMode("table", function (config, modeConfig) {
         function blankLine(state) {
             state.currentLineIsTable = false;
+			state.lineCounter = 0;
+			state.cellCounter = 0;
+			state.textAlignStore = [];
             return null;
         }
+		
+		function getTextAlignmentAsArray(line) {
+			if(! line || (!line.match(/(\|[:-\s]+\|([:-\s]+\|)?)+/))){
+				return [];
+			}
+			let result = [];
+			let elements = line.trim().split("|");
+			for(let e of elements) {
+				if(e === "") {
+					continue;
+				}
+				let align = "";
+				if(e.match(/\s*:\s*-+\s*/)) {
+					align = " text-align-left ";
+				}
+				if(e.match(/\s*-+\s*:\s*/)) {
+					align = " text-align-right ";
+				}
+				if(e.match(/\s*:\s*-+\s*:\s*/)) {
+					align = " text-align-center ";
+				}
+				result.push(align);
+			}
+			return result;
+		}
 
         return {
             startState: function () {
                 return {
-                    currentLineIsTable: false
+                    currentLineIsTable: false,
+					lineCounter: 0,
+					cellCounter: 0,
+					textAlignStore : []
                 };
             },
             copyState: function (s) {
                 return {
-                    currentLineIsTable: s.currentLineIsTable
+                    currentLineIsTable: s.currentLineIsTable,
+					lineCounter: s.lineCounter,
+					textAlignStore: s.textAlignStore,
                 };
             },
             token: function (stream, state) {
-                if(! state.currentLineIsTable) {
-                    if(stream.match(/(\|[^|]+\|([^|]+\|)?)+/, false)) {
+				if (stream.sol()) {
+					state.cellCounter = 0;
+					state.lineCounter++;
+					if(stream.match(/(\|[^|]+\|([^|]+\|)?)+/, false)) {
                         state.currentLineIsTable = true;
                     }
-                }
+					if(state.lineCounter === 1){
+						state.textAlignStore = getTextAlignmentAsArray(stream.lookAhead(1));
+					}
+				}
                 if(state.currentLineIsTable) {
+					let evenOddPrefix = state.lineCounter % 2 !== 0 ? " line-table-line-even " : " line-table-line-odd ";
+					let alignPrefix = "";
+					let headerPrefix = state.lineCounter === 1 ? " line-table-line-header " : "";
+					if(state.textAlignStore && (state.textAlignStore.length >= state.cellCounter)) {
+						alignPrefix = state.textAlignStore[state.cellCounter]
+					}
                     if(stream.next() === '|') {
-                        return "line-table-line table-cell table-cell-border";
+                        return "line-table-line table-cell table-cell-border" + evenOddPrefix + headerPrefix;
                     }
                     stream.skipTo("|");
-                    return "line-table-line table-cell table-cell-content";
+					state.cellCounter++;
+                    return "line-table-line table-cell table-cell-content" + evenOddPrefix + alignPrefix + headerPrefix;
                 }
                 stream.skipToEnd();
                 return null;

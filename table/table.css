@@ -11,9 +11,34 @@
 .cm-table-cell-content{
   overflow: hidden;
   text-overflow: ellipsis;
-  text-align: center;
 }
 
 .cm-table-cell-border{
   width: 5px;
 }
+
+.CodeMirror-line.table-line.table-line-even{
+  background-color: lightgray;
+}
+
+.CodeMirror-line.table-line.table-line-odd{
+  background-color: white;
+}
+
+.CodeMirror-line.table-line.table-line-header{
+	border-bottom: 2px solid black;
+}
+
+.cm-text-align-center{
+	text-align: center;
+}
+
+.cm-text-align-left {
+	text-align: left;
+}
+
+.cm-text-align-right {
+	text-align: right;
+}
+
+
