@@ -10,36 +10,36 @@
 
     CodeMirror.defineMode("table", function (config, modeConfig) {
         function blankLine(state) {
-            state.isCell = false;
+            state.nextLineIsTable = false;
             return null;
         }
 
         return {
             startState: function () {
                 return {
-                    isCell: false,
+                    currentLineIsTable: false
                 };
             },
             copyState: function (s) {
                 return {
-                    isCell: s.isCell
+                    currentLineIsTable: s.currentLineIsTable
                 };
             },
             token: function (stream, state) {
-                if (stream.next() === '|') {
-                    stream.skipTo("|");
-                    stream.next();
-                    state.isCell = true;
-                    return "line-table-line table-cell cell-even";
-                } else {
-                    if (state.isCell) {
-                        stream.skipTo("|") || stream.skipToEnd();
-                        state.isCell = false;
-                        return "line-table-line  table-cell cell-odd";
+                if(! state.currentLineIsTable) {
+                    if(stream.match(/(\|[^|]+\|([^|]+\|)?)+/, false)) {
+                        state.currentLineIsTable = true;
                     }
-                    stream.skipTo("|") || stream.skipToEnd();
-                    return null;
                 }
+                if(state.currentLineIsTable) {
+                    if(stream.next() === '|') {
+                        return "line-table-line table-cell table-cell-border";
+                    }
+                    stream.skipTo("|");
+                    return "line-table-line table-cell table-cell-content";
+                }
+                stream.skipToEnd();
+                return null;
             },
             blankLine: blankLine
         };

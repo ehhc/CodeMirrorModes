@@ -6,13 +6,14 @@
 
 .cm-table-cell {
   display: table-cell;
+}
+
+.cm-table-cell-content{
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
 }
-.cm-cell-odd {
-  border-left: none;
-  border-right: none;
+
+.cm-table-cell-border{
+  width: 5px;
 }
