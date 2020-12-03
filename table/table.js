@@ -10,7 +10,7 @@
 
     CodeMirror.defineMode("table", function (config, modeConfig) {
         function blankLine(state) {
-            state.nextLineIsTable = false;
+            state.currentLineIsTable = false;
             return null;
         }
 
