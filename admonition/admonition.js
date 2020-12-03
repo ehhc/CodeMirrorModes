@@ -9,7 +9,7 @@
   "use strict";
 
 
-  let admonitionTypes = '(note|abstract|info|tip|success|question|warning|failure|danger|bug|example|quote\"|NOTE|ABSTRACT|INFO|TIP|SUCCESS|QUESTION|WARNING|FAILURE|DANGER|BUG|EXAMPLE|QUOTE")';
+  let admonitionTypes = '(note|abstract|info|tip|success|question|warning|warn|failure|danger|bug|example|quote|NOTE|ABSTRACT|INFO|TIP|SUCCESS|QUESTION|WARNING|WARN|FAILURE|DANGER|BUG|EXAMPLE|QUOTE)';
 
   CodeMirror.defineMode("admonition", function (config, modeConfig) {
     function blankLine(state) {
@@ -47,7 +47,7 @@
             if (stream.match(/!!!/, true)) {
               state.isAdmonition = false;
               stream.skipToEnd();
-              return `line-admonition line-background-admonition line-background-${state.admonitionType} admonition admonition-end ${state.admonitionType}`;
+              return `line-admonition line-background-admonition line-background-end line-background-${state.admonitionType} admonition admonition-end ${state.admonitionType}`;
             }
             stream.skipToEnd();
             return `line-admonition line-content line-background-admonition line-background-${state.admonitionType} admonition ${state.admonitionType} `;
