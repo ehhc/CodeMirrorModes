@@ -16,9 +16,9 @@
 			state.textAlignStore = [];
             return null;
         }
-		
+
 		function getTextAlignmentAsArray(line) {
-			if(! line || (!line.match(/(\|[:-\s]+\|([:-\s]+\|)?)+/))){
+			if(! line || (!line.match(/(\|(:|-|\s)+\|((:|-|\s)+\|)?)+/))){
 				return [];
 			}
 			let result = [];
@@ -70,7 +70,7 @@
 					}
 				}
                 if(state.currentLineIsTable) {
-					let evenOddPrefix = state.lineCounter % 2 !== 0 ? " line-table-line-even " : " line-table-line-odd ";
+					let evenOddPrefix = state.lineCounter % 2 !== 0 ? " line-background-table-line-even " : " line-background-table-line-odd ";
 					let alignPrefix = "";
 					let headerPrefix = state.lineCounter === 1 ? " line-table-line-header " : "";
 					if(state.textAlignStore && (state.textAlignStore.length >= state.cellCounter)) {

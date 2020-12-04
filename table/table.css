@@ -17,12 +17,8 @@
   width: 5px;
 }
 
-.CodeMirror-line.table-line.table-line-even{
+.CodeMirror-linebackground.table-line-odd{
   background-color: lightgray;
-}
-
-.CodeMirror-line.table-line.table-line-odd{
-  background-color: white;
 }
 
 .CodeMirror-line.table-line.table-line-header{
