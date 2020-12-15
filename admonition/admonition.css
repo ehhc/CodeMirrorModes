@@ -1,23 +1,12 @@
 .CodeMirror-linebackground.admonition {
-  border-left: 0.5em solid blue;
-  border-right: 0.5em solid blue;
+  border-left: 0.4em solid blue;
   background-color: #f6fcff;
 }
 
-.CodeMirror-linebackground.admonition.header {
-  border-top: 1px solid blue;
-}
-
-.CodeMirror-linebackground.admonition.end {
-  border-bottom: 1px solid blue;
-}
-
-.CodeMirror-linebackground.admonition.header {
-  border-radius: 0.5em 0.5em 0 0;
-}
-
-.CodeMirror-linebackground.admonition.end {
-  border-radius: 0 0 0.5em 0.5em;
+.CodeMirror-line.admonition.admonition-header {
+  font-size: 1.5em;
+  border-bottom: 0.2em dotted blue;
+  border-left: 0.3em solid blue;
 }
 
 .CodeMirror-line.admonition {
@@ -31,7 +20,8 @@
   color: blue;
 }
 
-.note.CodeMirror-linebackground.admonition{
+.note.CodeMirror-linebackground.admonition,
+.note.admonition-header.CodeMirror-line{
   border-color: blue;
   background-color: #f6fcff;
 }
@@ -41,7 +31,8 @@
   color: blue
 }
 
-.abstract.CodeMirror-linebackground.admonition{
+.abstract.CodeMirror-linebackground.admonition,
+.abstract.admonition-header.CodeMirror-line{
   border-color: blue;
   background-color: #f6fcff;
 }
@@ -51,7 +42,8 @@
   color: blue
 }
 
-.success.CodeMirror-linebackground.admonition {
+.success.CodeMirror-linebackground.admonition,
+.success.admonition-header.CodeMirror-line{
   border-color: green;
   background-color: #bdffbd;
 }
@@ -61,7 +53,8 @@
   color: green;
 }
 
-.question.CodeMirror-linebackground.admonition {
+.question.CodeMirror-linebackground.admonition,
+.question.admonition-header.CodeMirror-line{
   border-color: green;
   background-color: #bdffbd;
 }
@@ -71,7 +64,8 @@
   color: green;
 }
 
-.tip.CodeMirror-linebackground.admonition {
+.tip.CodeMirror-linebackground.admonition,
+.tip.admonition-header.CodeMirror-line {
   border-color: green;
   background-color: #bdffbd;
 }
@@ -81,7 +75,10 @@
   color: green;
 }
 
-.warning.CodeMirror-linebackground.admonition, .warn.CodeMirror-linebackground.admonition {
+.warning.CodeMirror-linebackground.admonition,
+.warn.CodeMirror-linebackground.admonition,
+.warn.admonition-header.CodeMirror-line,
+.warning.admonition-header.CodeMirror-line{
   border-color: orange;
   background-color: #fffeec;
 }
@@ -93,9 +90,9 @@
   color: orange;
 }
 
-.example.CodeMirror-linebackground.admonition {
+.example.CodeMirror-linebackground.admonition,
+.example.admonition-header.CodeMirror-line{
   border-color: gray;
-  background-color: lightgray;
 }
 
 .cm-example.cm-admonition-type,
@@ -103,9 +100,9 @@
   color: gray
 }
 
-.quote.CodeMirror-linebackground.admonition{
+.quote.CodeMirror-linebackground.admonition,
+.quote.admonition-header.CodeMirror-line{
   border-color: gray;
-  background-color: lightgray;
 }
 
 .cm-quote.cm-admonition-type,
@@ -113,7 +110,8 @@
   color: gray
 }
 
-.CodeMirror-linebackground.admonition.bug{
+.CodeMirror-linebackground.admonition.bug,
+.bug.admonition-header.CodeMirror-line{
   border-color: darkred;
   background-color: #ff8080;
 }
@@ -123,7 +121,8 @@
   color: darkred
 }
 
-.CodeMirror-linebackground.admonition.danger{
+.danger.CodeMirror-linebackground.admonition,
+.danger.admonition-header.CodeMirror-line{
   border-color: darkred;
   background-color: #ff8080;
 }
@@ -133,7 +132,8 @@
   color: darkred
 }
 
-.CodeMirror-linebackground.admonition.failure{
+.failure.CodeMirror-linebackground.admonition,
+.failure.admonition-header.CodeMirror-line{
   border-color: darkred;
   background-color: #ff8080;
 }
